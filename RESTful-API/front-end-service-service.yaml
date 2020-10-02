@@ -9,11 +9,12 @@ metadata:
     io.kompose.service: front-end-service
   name: front-end-service
 spec:
-  type: LoadBalancer
+  type: LoadBalancer # works only in AWS and Google Cloud
   ports:
   - name: "8080"
-    port: 8080
-    targetPort: 80
+    port: 8080 # internal expose on port 8080 in the cluster - port of the service
+    targetPort: 80 # forward requests to all pods with label(selector in this file) front-end-service
+    nodePort: 30001 # expose the service on this port externally
   selector:
     io.kompose.service: front-end-service
 status:

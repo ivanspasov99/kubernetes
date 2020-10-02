@@ -28,7 +28,7 @@ spec:
         imagePullPolicy: ""
         name: front-end-service
         ports:
-        - containerPort: 80
+        - containerPort: 80 # forwarded request are coming here
         resources: {}
       restartPolicy: Always
       serviceAccountName: ""
